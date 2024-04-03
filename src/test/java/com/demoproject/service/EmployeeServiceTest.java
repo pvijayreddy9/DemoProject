@@ -1,6 +1,6 @@
 package com.demoproject.service;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Optional;
 
@@ -12,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
 import com.demoproject.dao.EmployeeRepository;
+import com.demoproject.dto.EmployeeDto;
 import com.demoproject.entity.Department;
 import com.demoproject.entity.Employee;
 @SpringBootTest
@@ -31,7 +32,7 @@ class EmployeeServiceTest {
 	@Test
 	public void getEmployeeById_Success() {
 		String empName = "abc";
-		Employee emp = empService.findEmployeeById(103l);
+		EmployeeDto emp = empService.findEmployeeById(103l);
 		assertEquals(empName,emp.getName());
 	}
 	
