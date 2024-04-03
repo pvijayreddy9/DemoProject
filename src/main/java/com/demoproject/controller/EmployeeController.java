@@ -24,19 +24,19 @@ public class EmployeeController {
 	EmployeeService empService;
 	
 	@GetMapping("/getallemployee") 
-	public ResponseEntity<List<Employee>> getEmployees() { 
+	public ResponseEntity<List<EmployeeDto>> getEmployees() { 
 	  
 	  return new ResponseEntity<>(empService.findAllEmployees(),HttpStatus.OK); 
 	}
 	
 	@GetMapping("/getemployee") 
-	public ResponseEntity<Employee> getEmployeeById(@RequestParam Long empId) { 
+	public ResponseEntity<EmployeeDto> getEmployeeById(@RequestParam Long empId) { 
 		 
 		return new ResponseEntity<>(empService.findEmployeeById(empId),HttpStatus.OK); 
 	}
 	
 	@PostMapping("/saveemployee") 
-	public ResponseEntity<Employee> saveEmployee(@RequestBody EmployeeDto emp) { 
+	public ResponseEntity<EmployeeDto> saveEmployee(@RequestBody EmployeeDto emp) { 
 		
 		return new ResponseEntity<>(empService.saveEmployee(emp),HttpStatus.OK); 
 	}
