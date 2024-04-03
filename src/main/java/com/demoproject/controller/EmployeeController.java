@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,19 +25,23 @@ public class EmployeeController {
 	
 	@GetMapping("/getallemployee") 
 	public ResponseEntity<List<Employee>> getEmployees() { 
-	  List<Employee> emplList = empService.findAllEmployees(); 
-	  return new ResponseEntity<>(emplList,HttpStatus.OK); 
+	  
+	  return new ResponseEntity<>(empService.findAllEmployees(),HttpStatus.OK); 
 	}
 	
 	@GetMapping("/getemployee") 
 	public ResponseEntity<Employee> getEmployeeById(@RequestParam Long empId) { 
-		Employee emp = empService.findEmployeeById(empId); 
-		return new ResponseEntity<>(emp,HttpStatus.OK); 
+		 
+		return new ResponseEntity<>(empService.findEmployeeById(empId),HttpStatus.OK); 
 	}
 	
 	@PostMapping("/saveemployee") 
 	public ResponseEntity<Employee> saveEmployee(@RequestBody EmployeeDto emp) { 
-		Employee employee = empService.saveEmployee(emp); 
-		return new ResponseEntity<>(employee,HttpStatus.OK); 
+		
+		return new ResponseEntity<>(empService.saveEmployee(emp),HttpStatus.OK); 
+	}
+	@DeleteMapping("/deleteemployee") 
+	public ResponseEntity<String> deleteEmployee(@RequestParam Long emp) { 		  
+		return new ResponseEntity<>(empService.deleteEmployee(emp),HttpStatus.OK); 
 	}
 }

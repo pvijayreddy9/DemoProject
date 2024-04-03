@@ -7,10 +7,12 @@ import com.demoproject.entity.Employee;
 
 public interface EmployeeService {
 	
-	public Employee findEmployeeById(Long empId);
+	public EmployeeDto findEmployeeById(Long empId);
 	
-	public List<Employee> findAllEmployees();
+	public List<EmployeeDto> findAllEmployees();
 
-	public Employee saveEmployee(EmployeeDto emp);
+	public EmployeeDto saveEmployee(EmployeeDto emp);
+
+	public String deleteEmployee(Long empId);
 
 }
