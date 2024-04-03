@@ -12,6 +12,23 @@ public class EmployeeDto {
 	
     private int salary;
 
+	
+
+	public EmployeeDto() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+
+	public EmployeeDto(Long empId, String name, Department departmentId, int salary) {
+		super();
+		this.empId = empId;
+		this.name = name;
+		this.departmentId = departmentId;
+		this.salary = salary;
+	}
+
+
 	public Long getEmpId() {
 		return empId;
 	}

@@ -39,6 +39,15 @@ public class Employee {
 		
 	}
 	
+	
+	public Employee(Long empId, String name, Department departmentId, int salary) {
+		super();
+		this.empId = empId;
+		this.name = name;
+		this.departmentId = departmentId;
+		this.salary = salary;
+	}
+
 
 	public Employee(EmployeeDto empdto) {
 		super();
