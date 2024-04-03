@@ -9,29 +9,41 @@ import com.demoproject.dao.EmployeeRepository;
 import com.demoproject.dto.EmployeeDto;
 import com.demoproject.entity.Employee;
 import com.demoproject.service.EmployeeService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 	
 	@Autowired
 	EmployeeRepository empRepository;
+	
+	@Autowired
+	ObjectMapper objMapper;
 
 	@Override
-	public Employee findEmployeeById(Long empId) {
+	public EmployeeDto findEmployeeById(Long empId) {
 		
-		return empRepository.findById(empId).get();
+		return objMapper.convertValue(empRepository.findById(empId).get(), EmployeeDto.class);
 	}
 
 	@Override
-	public List<Employee> findAllEmployees() {
-		
-		return empRepository.findAll();
+	public List<EmployeeDto> findAllEmployees() {
+		List<Employee> empList = empRepository.findAll();
+		return Employee.convertToDto(empList);
 	}
 
 	@Override
-	public Employee saveEmployee(EmployeeDto empdto) {
-		Employee emp = new Employee(empdto);
-		return empRepository.save(emp);
+	public EmployeeDto saveEmployee(EmployeeDto empdto) {
+		Employee emp = objMapper.convertValue(empdto, Employee.class);
+		return objMapper.convertValue(empRepository.save(emp), EmployeeDto.class);
+	}
+
+	@Override
+	public String deleteEmployee(Long empId) {
+		Employee emp = new Employee();
+		emp.setEmpId(empId);
+		empRepository.delete(emp);
+		return "Deleted Successfully";
 	}
 
 }

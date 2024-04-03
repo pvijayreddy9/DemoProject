@@ -1,7 +1,12 @@
 package com.demoproject.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.demoproject.dto.EmployeeDto;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import jakarta.persistence.Column;
@@ -11,7 +16,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -101,6 +105,16 @@ public class Employee {
 						"}"+
 				", salary : " + salary
 				+ "}";
+	}
+	
+	public static List<EmployeeDto> convertToDto(List<Employee> empList){
+		List<EmployeeDto> empListDto = new ArrayList<>();		
+		ObjectMapper objMapper = new ObjectMapper();
+        for (Employee employee : empList) {
+			empListDto.add(objMapper.convertValue(employee, EmployeeDto.class));
+		}
+        return empListDto;
+		
 	}
 	
 //	public static void main(String[] args) throws JsonProcessingException {
