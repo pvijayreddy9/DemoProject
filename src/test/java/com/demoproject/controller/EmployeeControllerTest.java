@@ -32,13 +32,13 @@ class EmployeeControllerTest {
 	@MockBean
 	private EmployeeService empService;
 	
-	private Employee employee;
+	private EmployeeDto employee;
 	
 	@BeforeEach
 	void setup() {
 		Department dep = new Department();
 		dep.setDepartmentId(1);
-		employee = new Employee();
+		employee = new EmployeeDto();
 		employee.setName("abc");
 		employee.setDepartmentId(dep);
 		employee.setSalary(89000);
