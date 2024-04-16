@@ -17,6 +17,8 @@ import com.demoproject.dto.EmployeeDto;
 import com.demoproject.entity.Employee;
 import com.demoproject.service.EmployeeService;
 
+import jakarta.validation.Valid;
+
 @RestController
 public class EmployeeController {
 
@@ -36,7 +38,7 @@ public class EmployeeController {
 	}
 	
 	@PostMapping("/saveemployee") 
-	public ResponseEntity<EmployeeDto> saveEmployee(@RequestBody EmployeeDto emp) { 
+	public ResponseEntity<EmployeeDto> saveEmployee(@Valid @RequestBody EmployeeDto emp) { 
 		
 		return new ResponseEntity<>(empService.saveEmployee(emp),HttpStatus.OK); 
 	}
