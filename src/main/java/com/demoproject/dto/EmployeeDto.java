@@ -2,10 +2,15 @@ package com.demoproject.dto;
 
 import com.demoproject.entity.Department;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
 public class EmployeeDto {
 
 	private Long empId;
     
+	@NotBlank(message = "Employee name cannot be empty")
+    @Size(min = 2, max = 50, message = "Employee name must be between 2 and 50 characters")
     private String name;
     
     private Department departmentId;
