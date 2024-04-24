@@ -11,6 +11,7 @@ import com.demoproject.dao.DepartmentRepository;
 import com.demoproject.dao.EmployeeRepository;
 import com.demoproject.dto.DepartmentDto;
 import com.demoproject.dto.EmployeeDto;
+import com.demoproject.entity.Book;
 import com.demoproject.entity.Employee;
 import com.demoproject.exception.MyCustomException;
 import com.demoproject.service.FetchDataService;
@@ -41,6 +42,14 @@ public class FetchDataServiceImpl implements FetchDataService{
 			throw new MyCustomException("Entity you provided is incorrect");
 		}
 	}
+
+
+	@Override
+	public Book saveBook(Book book) {
+		
+		return null;
+	}
+	
 	
 
 }

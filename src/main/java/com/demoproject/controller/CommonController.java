@@ -8,12 +8,19 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.demoproject.dto.EmployeeDto;
+import com.demoproject.entity.Book;
+import com.demoproject.entity.BookId;
 import com.demoproject.entity.Employee;
 import com.demoproject.exception.MyCustomException;
 import com.demoproject.service.FetchDataService;
+
+import jakarta.validation.Valid;
 
 @RestController
 public class CommonController {
@@ -27,5 +34,11 @@ public class CommonController {
 		List<?> result = fetchData.getResults(entity);
 		return new ResponseEntity<>(result,HttpStatus.OK);
 		
+	}
+	
+	@PostMapping("/saveBook") 
+	public ResponseEntity<Book> saveEmployee(@RequestBody Book book) { 
+		
+		return new ResponseEntity<>(fetchData.saveBook(book),HttpStatus.OK); 
 	}
 }
