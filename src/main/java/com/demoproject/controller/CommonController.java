@@ -37,7 +37,7 @@ public class CommonController {
 	}
 	
 	@PostMapping("/saveBook") 
-	public ResponseEntity<Book> saveEmployee(@RequestBody Book book) { 
+	public ResponseEntity<Book> saveBook(@RequestBody Book book) { 
 		
 		return new ResponseEntity<>(fetchData.saveBook(book),HttpStatus.OK); 
 	}
